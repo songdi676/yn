@@ -9,12 +9,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: macos-15
-            platform: 'mac'
           - os: windows-2022
             platform: 'win'
-          - os: ubuntu-22.04
-            platform: 'linux'
     runs-on: ${{ matrix.os }}
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -114,21 +110,6 @@ jobs:
           pip install coscmd
           coscmd config -a $COS_SECRET_ID -s $COS_SECRET_KEY -b $COS_BUCKET -e cos.accelerate.myqcloud.com
 
-      - name: Install coscmd for Windows
-        if: matrix.platform == 'win' && contains(github.ref_name, '-next-') != true
-        shell: cmd
-        env:
-          COS_SECRET_ID: ${{ secrets.COS_SECRET_ID }}
-          COS_SECRET_KEY: ${{ secrets.COS_SECRET_KEY }}
-          COS_BUCKET: ${{ secrets.COS_BUCKET }}
-        run: |
-          pip install --upgrade --no-cache-dir coscmd
-          coscmd config -a "%COS_SECRET_ID%" -s "%COS_SECRET_KEY%" -b "%COS_BUCKET%" -e cos.accelerate.myqcloud.com
-
-      - name: Upload to COS
-        if: contains(github.ref_name, '-next-') != true
-        run: |
-          coscmd upload -r out / --include out/Yank-Note*.*,out/latest*.yml
 
       - name: GH Release
         uses: softprops/action-gh-release@v2.0.5
