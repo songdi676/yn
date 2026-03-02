@@ -127,7 +127,7 @@ export function getPurchased (force = false) {
   // const val = _getPurchased(force)
 
   // if (typeof lastPurchased === 'boolean' && val !== lastPurchased) {
-    lastPurchased = val
+   //  lastPurchased = val
    //  triggerHook('PREMIUM_STATUS_CHANGED')
   // } else {
    //  lastPurchased = val
