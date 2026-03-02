@@ -124,16 +124,16 @@ function _getPurchased (force = false) {
 }
 
 export function getPurchased (force = false) {
-  const val = _getPurchased(force)
+  // const val = _getPurchased(force)
 
-  if (typeof lastPurchased === 'boolean' && val !== lastPurchased) {
+  // if (typeof lastPurchased === 'boolean' && val !== lastPurchased) {
     lastPurchased = val
-    triggerHook('PREMIUM_STATUS_CHANGED')
-  } else {
-    lastPurchased = val
-  }
+   //  triggerHook('PREMIUM_STATUS_CHANGED')
+  // } else {
+   //  lastPurchased = val
+  // }
 
-  return val
+  return true
 }
 
 export function showPremium (tab?: PremiumTab) {
