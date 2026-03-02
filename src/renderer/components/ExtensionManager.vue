@@ -433,11 +433,11 @@ async function checkOrigin (extension: Extension) {
 }
 
 async function checkRequirements (extension: Extension) {
-  if (extension.requirements.premium && !getPurchased()) {
-    useToast().show('info', t('premium.need-purchase', extension.displayName))
-    showPremium()
-    throw new Error('Extension requires premium')
-  }
+  // if (extension.requirements.premium && !getPurchased()) {
+    // useToast().show('info', t('premium.need-purchase', extension.displayName))
+    // showPremium()
+    // throw new Error('Extension requires premium')
+  // }
 
   if (extension.requirements.terminal && (FLAG_DISABLE_XTERM || FLAG_MAS)) {
     if (await useModal().confirm({
